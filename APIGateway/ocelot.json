@@ -1,0 +1,30 @@
+{
+  "GlobalConfiguration": {
+    "BaseUrl": "http://c_apigateway",
+    "ServiceDiscoveryProvider": {
+      "Host": "localhost",
+      "Port": 8500,
+      "Type":  "Consul"
+    }
+  },
+  "Routes": [
+    {
+      "UpstreamPathTemplate": "/person/{everything}",
+      "DownstreamPathTemplate": "/api/Person/{everything}",
+      "UseServiceDiscovery": true,
+      "ServiceName": "ContactService",
+      "UpstreamHttpMethod": [ "Get", "Post" ],
+      "DownstreamScheme": "http"
+     
+    },
+    {
+      "UpstreamPathTemplate": "/client/{everything}",
+      "DownstreamPathTemplate": "/api/Client/{everything}",
+      "UpstreamHttpMethod": [ "Get", "Post" ],
+      "UseServiceDiscovery": true,
+      "ServiceName":  "RaportService",
+      "DownstreamScheme": "http"
+    
+    }
+  ]
+}

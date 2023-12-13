@@ -1,0 +1,53 @@
+version: '3.4'
+
+services:
+
+  apigateway:
+    image: ${DOCKER_REGISTRY-}apigateway
+    build:
+      context: .
+      dockerfile: APIGateway/Dockerfile
+
+  raportapi:
+    image: ${DOCKER_REGISTRY-}raportapi
+    build:
+      context: .
+      dockerfile: RaportAPI/Dockerfile
+
+  contactapi:
+    image: ${DOCKER_REGISTRY-}contactapi
+    build:
+      context: .
+      dockerfile: ContactAPI/Dockerfile
+
+  rabbitmq:
+    container_name: "rabbitmq"
+    image: rabbitmq:3.8-management-alpine
+    environment:
+      - RABBITMQ_DEFAULT_USER=user
+      - RABBITMQ_DEFAULT_PASS=mypass
+    ports:
+      # RabbitMQ interface
+      - '5672:5672'
+      # Web interface
+      - '15672:15672'
+
+  postgres:
+    ports:
+      - '5432:5432'
+    container_name: accman-postgresql
+    environment:
+      - POSTGRES_PASSWORD=123456
+    volumes:
+      - 'accman-postgresql-volume:/var/lib/postgresql/data'
+    image: 'postgres:10.4'
+    networks:
+      - accman-network
+
+volumes:
+  accman-postgresql-volume:
+
+networks:
+  accman-network:
+    driver: bridge
+
