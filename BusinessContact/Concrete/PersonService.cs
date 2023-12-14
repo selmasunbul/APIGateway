@@ -54,6 +54,7 @@ namespace Business.Concrete
 
             if (isItemRemoved)
             {
+
                 return await ServiceOutput<List<Person>>.GenerateAsync(200, true, "Silindi");
             }
             return await ServiceOutput<List<Person>>.GenerateAsync(200, false, "Başarısız");

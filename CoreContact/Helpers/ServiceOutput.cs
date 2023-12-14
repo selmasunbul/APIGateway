@@ -24,12 +24,12 @@ namespace Core.Helpers
         public T? Data { get; set; }
 
 
-        private static IServiceOutput<T> Generate<T>(IServiceOutput<T> serviceOutput) where T : class, new()
+        public static IServiceOutput<T> Generate<T>(IServiceOutput<T> serviceOutput) where T : class, new()
         {
             return serviceOutput;
         }
 
-        private static IServiceOutput<T> Generate<T>(int code, bool status = false, string? message = null, int? rowCount = null, int? totalCount = null, T? data = null) where T : class, new()
+        public static IServiceOutput<T> Generate<T>(int code, bool status = false, string? message = null, int? rowCount = null, int? totalCount = null, T? data = null) where T : class, new()
         {
             IServiceOutput<T> output = new ServiceOutput<T>
             {
