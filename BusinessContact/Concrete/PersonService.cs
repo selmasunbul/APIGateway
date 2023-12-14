@@ -29,7 +29,6 @@ namespace Business.Concrete
 
         }
 
-
         public async Task<IServiceOutput<Person>> CreateAsync(PersonModel entity)
         {
             var person = new Person
