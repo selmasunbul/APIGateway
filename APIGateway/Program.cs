@@ -28,7 +28,7 @@ builder.Services.AddCors(options =>
 });
 
 builder.Configuration.AddJsonFile("ocelot.json");
-builder.Services.AddOcelot(builder.Configuration).AddConsul(); ; 
+builder.Services.AddOcelot(builder.Configuration).AddConsul() ; 
 
 
 
