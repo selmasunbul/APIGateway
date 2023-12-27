@@ -17,18 +17,10 @@ namespace RaporApp.Controllers
             Logger = logger;
             MessageService = messageService;
         }
-
-        public ClientController(IMessageService object1, ILogger<ClientController> object2)
-        {
-            this.object1 = object1;
-            this.object2 = object2;
-        }
-
         private readonly IHttpService HttpService;
         private readonly ILogger<ClientController> Logger;
         private readonly IMessageService MessageService;
-        private IMessageService object1;
-        private ILogger<ClientController> object2;
+
 
         [HttpGet]
         [Route("rapor-request")]
